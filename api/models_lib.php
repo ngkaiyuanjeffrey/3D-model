@@ -16,8 +16,8 @@ function model_payload(): array
 {
     $files = model_files();
     $config = read_json_config('models', ['enemy' => 'random', 'weapon' => '']);
-    $enemyCandidates = array_values(array_filter($files, static fn(string $file): bool => !preg_match('/(fps|weapon|rifle|akm|pistol|gun)/i', $file)));
-    $weaponCandidates = array_values(array_filter($files, static fn(string $file): bool => preg_match('/(fps|weapon|rifle|akm|pistol|gun)/i', $file)));
+    $enemyCandidates = array_values(array_filter($files, static fn(string $file): bool => (bool) preg_match('/(fps|weapon|rifle|akm|pistol|gun)/i', $file) === false));
+    $weaponCandidates = array_values(array_filter($files, static fn(string $file): bool => (bool) preg_match('/(fps|weapon|rifle|akm|pistol|gun)/i', $file)));
     $enemy = (string) ($config['enemy'] ?? 'random');
     $weapon = (string) ($config['weapon'] ?? '');
     return [
