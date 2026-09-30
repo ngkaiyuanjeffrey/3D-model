@@ -1,5 +1,6 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 import {GLTFLoader} from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+import {MindARThree} from 'https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js';
 
 const PROP_LAYOUT = [
     ['Street Light.glb', -.48, 0, -.2],
@@ -38,8 +39,8 @@ export class CityProps {
     }
 }
 
-const originalAddAnchor = MINDAR.IMAGE.MindARThree.prototype.addAnchor;
-MINDAR.IMAGE.MindARThree.prototype.addAnchor = function (...args) {
+const originalAddAnchor = MindARThree.prototype.addAnchor;
+MindARThree.prototype.addAnchor = function (...args) {
     const anchor = originalAddAnchor.apply(this, args);
     new CityProps(anchor.group).load();
     return anchor;
