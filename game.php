@@ -36,7 +36,7 @@ $weaponSrc = preg_match('/^[A-Za-z0-9._-]+\.glb$/i', $weapon) === 1
         <button id="reload" class="touch-button reload" type="button">RELOAD</button>
         <button id="fire" class="touch-button fire" type="button">FIRE</button>
     </div>
-    <div id="gameMessage" class="game-message" <?= $target ? 'hidden' : '' ?>>
+    <div id="gameMessage" class="game-message">
         <div>
             <h1><?= $target ? 'READY' : 'TARGET MISSING' ?></h1>
             <p id="messageText"><?= $target ? 'Tap FIRE or press SPACE to begin.' : 'Compile an image target before entering the arena.' ?></p>
